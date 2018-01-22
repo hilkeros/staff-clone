@@ -1,0 +1,31 @@
+<h1><%= @group.name %></h1>
+
+<p><%= link_to 'Edit group', edit_group_path(@group) %></p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @group.users.each do |user| %>
+      <tr>
+        <td><%= link_to user.name, edit_user_path(user) %></td>
+        <td><%= user.email %></td>
+        <td><%= user.mobile %></td>
+        <td>
+          <%= link_to 'Edit', edit_user_path(user) %>
+          <% if current_user.admin? && !current_user?(user) %>
+            <%= link_to 'Delete',
+              user, method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

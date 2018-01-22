@@ -17,12 +17,13 @@ User.create(name: 'Riccardo Muzzi', admin: true, group_id: bosses.id,
 						email: 'rmu@pdc-salespitcher.ch', password: 'riccardo', password_confirmation: 'riccardo')
 
 User.create(name: 'Laura', admin: false, group_id: mitarbeiter.id,
-						email: 'laura@pdc-salespitcher.ch', password: 'laura', password_confirmation: 'laura')
+						email: 'laura@pdc-salespitcher.ch', password: 'laurara', password_confirmation: 'laurara')
 
 User.create(name: 'Hilke', admin: false, group_id: mitarbeiter.id,
-						email: 'hilkeros@gmail.com', password: 'hilke', password_confirmation: 'hilke')
+						email: 'hilkeros@gmail.com', password: 'hilkeros', password_confirmation: 'hilkeros')
 
 User.create(name: 'Martina Rykert', admin: false, group_id: pdc.id,
 						email: 'mrykart@pdc-salespitcher.ch', password: 'martina', password_confirmation: 'martina')
+
 User.create(name: 'Stefan Isliker', admin: false, group_id: pdc.id,
 						email: 'sisliker@pdc-online.com', password: 'stefan', password_confirmation: 'stefan')
