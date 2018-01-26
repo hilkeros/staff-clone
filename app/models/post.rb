@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :group, optional: true
   belongs_to :user
+  has_many :post_reads
 
   has_attached_file :picture, styles: { medium: "300x300>", thumb: "100x100>" }
 
@@ -12,11 +13,17 @@ class Post < ApplicationRecord
  end
 
  def opens
- 	0
+ 	post_reads.count
  end
 
  def open_rate
- 	((opens / receivers) * 100).to_i
+ 	((opens.to_f / receivers.to_f) * 100).to_i
+ end
+
+ def check_post_tracking(user)
+ 	unless post_reads.where(user: user).present?
+ 		PostRead.create(post_id: self.id, user_id: user.id)
+ 	end
  end
 
 end

@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 
   def show
   	@post = Post.find(params[:id])
+  	@post.check_post_tracking(current_user)
   end
 
   def edit
