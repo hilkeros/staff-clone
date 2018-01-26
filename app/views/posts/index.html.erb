@@ -8,6 +8,9 @@
       <th scope="col">Title</th>
       <% if current_user.admin %>
         <th scope="col">Group</th>
+        <th scope="col">Receivers</th>
+        <th scope="col">Opens</th>
+        <th scope="col">Percent</th>
         <th scope="col">Visible</th>
         <th scope="col">Actions</th>
       <% end %>
@@ -19,6 +22,9 @@
         <td><%= link_to post.title, post_path(post) %></td>
         <% if current_user.admin %>
           <td><%= link_to post.group.name, group_path(post.group) %></td>
+          <td><%= post.receivers %></td>
+          <td><%= post.opens %></td>
+          <td><%= post.open_rate %> %</td>
           <td><%= post.visible %></td>
           <td><%= link_to 'Edit', edit_post_path(post) %>
               <%= link_to 'Delete',

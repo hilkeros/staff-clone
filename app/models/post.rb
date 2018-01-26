@@ -7,4 +7,16 @@ class Post < ApplicationRecord
   validates_attachment :picture,
                      content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
 
+ def receivers
+ 	group.users.count || 0
+ end
+
+ def opens
+ 	0
+ end
+
+ def open_rate
+ 	((opens / receivers) * 100).to_i
+ end
+
 end
