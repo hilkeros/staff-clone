@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180122164622) do
+ActiveRecord::Schema.define(version: 20180126131036) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
@@ -25,9 +25,12 @@ ActiveRecord::Schema.define(version: 20180122164622) do
     t.text     "message"
     t.boolean  "visible"
     t.boolean  "track_reads"
-    t.string   "picture"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
     t.index ["group_id"], name: "index_posts_on_group_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end

@@ -49,7 +49,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-      params.require(:post).permit(:title, :message, :group_id, :user_id, :visible, :track_reads)
+      params.require(:post).permit(:title, :message, :group_id, :user_id, :visible, :track_reads, :picture)
   end
 
 end

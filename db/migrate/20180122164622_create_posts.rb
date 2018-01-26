@@ -7,7 +7,6 @@ class CreatePosts < ActiveRecord::Migration[5.0]
       t.text :message
       t.boolean :visible
       t.boolean :track_reads
-      t.string :picture
 
       t.timestamps
     end
