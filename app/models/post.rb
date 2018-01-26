@@ -3,6 +3,8 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :post_reads
 
+  after_create :send_mails
+
   has_attached_file :picture, styles: { medium: "300x300>", thumb: "100x100>" }
 
   validates_attachment :picture,
@@ -23,6 +25,12 @@ class Post < ApplicationRecord
  def check_post_tracking(user)
  	unless post_reads.where(user: user).present?
  		PostRead.create(post_id: self.id, user_id: user.id)
+ 	end
+ end
+
+ def send_mails
+ 	group.users.each do |user|
+ 		UserMailer.new_post(self, user).deliver_now
  	end
  end
 
